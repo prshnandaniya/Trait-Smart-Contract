@@ -75,8 +75,6 @@ contract Trait is Ownable, ERC721Holder, ERC1155Holder {
     mapping(uint256 => StructOffer) private _mappingOffer;
     mapping(address => StructAccount) private _mappingAccounts;
 
-    // mapping(address => bool) public isExemptedFromFees;
-
     constructor(uint256 _feesInWei) {
         _fees = _feesInWei;
     }
@@ -175,8 +173,6 @@ contract Trait is Ownable, ERC721Holder, ERC1155Holder {
         uint256 currentTime = block.timestamp;
 
         offerId = _offerIds;
-
-        // StructOffer storage structOffer = new StructOffer(0);
 
         if (!_isBalanceExcludedFromFees(msgSender)) {
             require(
